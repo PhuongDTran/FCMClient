@@ -43,6 +43,13 @@ namespace FCMClient
             logTokenButton.Click += delegate {
                 Log.Debug(TAG, "InstanceID token: " + FirebaseInstanceId.Instance.Token);
             };
+
+
+            var subscribeButton = FindViewById<Button>(Resource.Id.subscribeButton);
+            subscribeButton.Click += delegate {
+                FirebaseMessaging.Instance.SubscribeToTopic("news");
+                Log.Debug(TAG, "Subscribed to remote notifications");
+            };
         }
 
         protected override void OnResume()
